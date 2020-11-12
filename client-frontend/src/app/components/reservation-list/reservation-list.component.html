@@ -1,2 +1,18 @@
-<h2>Reservations</h2>
 
+<div class="table">
+    <h2>Reservations</h2>
+    <table *ngFor="let reservation of reservations">
+        <tr>
+            <th>Room Number</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th><button class="update" (click)="update(room)">UPDATE</button></th>
+        </tr>
+        <tr>
+            <th>{{reservation.room_number}}</th>
+            <th>{{reservation.check_in}}</th>
+            <th>{{reservation.check_out}}</th>
+            <th><button class="delete" (click)="delete(reservation)">DELETE</button></th>
+        </tr>
+    </table>
+</div>
