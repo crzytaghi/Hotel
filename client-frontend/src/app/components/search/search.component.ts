@@ -22,6 +22,10 @@ export class SearchComponent implements OnInit {
 
   // The search function will run once the search button is clicked, and will access all of the data in the rooms DB.
   search() {
+    console.log(this.checkIn);
+    console.log(this.checkOut);
+    console.log(this.reservationService);
+    
     this.roomService.getRooms().subscribe((response) => {
       this.rooms = response;
     })

@@ -16,19 +16,32 @@ export class ReservationListComponent implements OnInit {
 
   }
 
+  // Inject the getReservations API route from the reservationsService file
   ngOnInit() {
-    this.http.get('http://localhost:3000/reservations').subscribe((response) => {
+    this.reservationService.getReservations().subscribe((response) => {
       this.reservations = response;
-      console.log(response);
-      
     })
   }
 
   delete(reservation) {
-    this.reservationService.delete(reservation.reservation_id).subscribe((response) => {
-      console.log(response);
+    this.reservationService.deleteReservation(reservation.reservation_id).subscribe();
+    window.location.reload();
+  }
+
+  public showUpdateForm: boolean = false;
+
+  toggleUpdate(room) {
+    this.showUpdateForm = !this.showUpdateForm;
+    console.log(this.showUpdateForm);
+    console.log(room);
+    
+  }
+
+  update(reservation) {
+    this.reservationService.updateReservation(reservation.reservation_id, reservation.room_number, reservation.check_in, reservation.check_out).subscribe((response) => {
+      console.log(`PUT request successful, ${response}`);
     })
     console.log(reservation);
-    
+    window.location.reload();
   }
 }

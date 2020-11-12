@@ -30,9 +30,9 @@ app.use(session({
     saveUninitialized: false
 }));
 
-// app.get('/', (req,res) => {
-//     res.send(`hotel reservation app ${PORT}`);
-// })
+app.get('/', (req,res) => {
+    res.send(`hotel reservation app ${PORT}`);
+})
 
 // app.get('/', (req,res) => {
 //     res.json({ info: 'Node.js,Express, and Postgres API'});
