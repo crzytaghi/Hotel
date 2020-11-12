@@ -17,7 +17,8 @@ if (process.env.DATABASE_URL) {
         user: process.env.USER,
         host: process.env.HOST,
         port: process.env.PG_PORT,
-        database: process.env.DBNAME
+        database: process.env.DBNAME,
+        password: process.env.PASSWORD
     })
 }
 
