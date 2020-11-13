@@ -1,4 +1,4 @@
-const Pool = require('pg').Pool;
+const Pool = require('pg').Pool; // Allows us to handle PostgreSQL queries for node.js
 const { CLient, Client } = require('pg');
 
 let pool = '';

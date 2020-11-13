@@ -1,11 +1,9 @@
 // ===== Dependencies ===== //
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const session = require('express-session');
+
 require('dotenv').config();
-// const pool = require('./db');
-const path = require('path');
 
 // ===== Configuration ===== //
 const app = express();
@@ -16,12 +14,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 
 app.use(express.json()); // Allowing us access to the request to body which returns json data
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/dist/'));
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); // allows for objects and arrays to be encoded into the URL-encoded format, allowing for a JSON-like experience with URL-encoded
 
 // If you want to run sessions --
 app.use(session({
@@ -29,10 +22,6 @@ app.use(session({
     resave: true,
     saveUninitialized: false
 }));
-
-// app.get('/', (req,res) => {
-//     res.send(`hotel reservation app ${PORT}`);
-// })
 
 app.get('/', (req,res) => {
     res.json({ info: 'Node.js,Express, and Postgres API'});
